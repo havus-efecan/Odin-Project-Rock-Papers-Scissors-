@@ -13,6 +13,8 @@
 
 let x = computerPlay();
 
+
+
 let computerMove;
 
     switch(x){
@@ -28,5 +30,46 @@ let computerMove;
         break;
 
     }
+
+
+  let playerMove = prompt("Enter a move")
+  let outcome
+
+  switch(playerMove){
+
+    case 'rock': 
+    if(computerMove == 'rock'){
+        outcome = 'draw'
+
+    } else if(computerMove == 'paper'){
+        outcome = 'you lose'
+    } else {
+        outcome = 'you win'
+    }
+    break;
+    case 'paper':
+    if(computerMove == 'paper'){
+        outcome = 'draw'
+
+    } else if(computerMove == 'scissors'){
+        outcome = 'you lose'
+    } else {
+        outcome = 'you win'
+    }
+    break;
+    case 'scissors':
+    if(computerMove = 'scissors'){
+        outcome = 'draw'
+
+    } else if(computerMove == 'rock'){
+        outcome = 'you lose'
+    } else {
+        outcome = 'you win'
+    }
+    break;
+
+}
+alert(`Computer chose ${computerMove}, ${outcome}`)
+
 
 </script>
