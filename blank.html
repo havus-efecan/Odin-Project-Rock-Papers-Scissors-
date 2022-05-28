@@ -1,5 +1,9 @@
 <script>
 
+ let playerScore = 0, computerScore = 0;
+
+
+
  let computerPlay = function(){
 
 
@@ -10,11 +14,9 @@
 
 }
 
+for (let i = 0; i < 5; i++) {
 
 let x = computerPlay();
-
-
-
 let computerMove;
 
     switch(x){
@@ -43,8 +45,10 @@ let computerMove;
 
     } else if(computerMove == 'paper'){
         outcome = 'you lose'
+        computerScore++;
     } else {
         outcome = 'you win'
+        playerScore++;
     }
     break;
     case 'paper':
@@ -53,8 +57,10 @@ let computerMove;
 
     } else if(computerMove == 'scissors'){
         outcome = 'you lose'
+        computerScore++;
     } else {
         outcome = 'you win'
+        playerScore++;
     }
     break;
     case 'scissors':
@@ -63,13 +69,20 @@ let computerMove;
 
     } else if(computerMove == 'rock'){
         outcome = 'you lose'
+        computerScore++;
     } else {
         outcome = 'you win'
+        playerScore++;
     }
     break;
 
 }
 alert(`Computer chose ${computerMove}, ${outcome}`)
 
+
+
+}
+
+alert(`you: ${playerScore} computer: ${computerScore}`)
 
 </script>
