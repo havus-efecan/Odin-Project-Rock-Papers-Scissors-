@@ -1,88 +1,171 @@
-<script>
-
- let playerScore = 0, computerScore = 0;
-
-
-
- let computerPlay = function(){
-
-
-    return Math.floor(Math.random() * (3 - 1 + 1) + 1);
-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+  </head>
+  <body>
 
 
+    <button class='rock'>rock</button>
+    <button class="paper">paper</button>
+    <button class="scissors">scissors</button>
+    <div class="results">
+        <h1 class="playerScore">Player:0</h1>
+        <h1 class="computerScore">Computer:0</h1>
 
-}
+    </div>
 
-for (let i = 0; i < 5; i++) {
 
-let x = computerPlay();
-let computerMove;
 
-    switch(x){
 
-        case 1: 
-        computerMove = 'rock'
-        break;
-        case 2:
-        computerMove = 'paper'
-        break;
-        case 3:
-        computerMove = 'scissors'
-        break;
+
+
+
+
+
+
+
+  </body>
+
+  <script>
+    let outcome
+
+    let playerScore = 0
+    let computerScore = 0
+
+    let computerPlay = function(){
+   
+   
+   return Math.floor(Math.random() * (3 - 1 + 1) + 1);
+
+
+
 
     }
 
 
-  let playerMove = prompt("Enter a move")
-  let outcome
+   
+   
+   function playRound(playerMove){
 
-  switch(playerMove){
+    let x = computerPlay();
+   let computerMove;
+   
+       switch(x){
+   
+           case 1: 
+           computerMove = 'rock'
+           break;
+           case 2:
+           computerMove = 'paper'
+           break;
+           case 3:
+           computerMove = 'scissors'
+           break;
+   
+       }
+   
+   
+   
+     switch(playerMove){
+   
+       case 'rock': 
+       if(computerMove == 'rock'){
+           outcome = 'draw'
+   
+       } else if(computerMove == 'paper'){
+           outcome = 'you lose'
+       } else {
+           outcome = 'you win'
+       }
+       break;
+       case 'paper':
+       if(computerMove == 'paper'){
+           outcome = 'draw'
+   
+       } else if(computerMove == 'scissors'){
+           outcome = 'you lose'
+       } else {
+           outcome = 'you win'
+       }
+       break;
+       case 'scissors':
+       if(computerMove == 'scissors'){
+           outcome = 'draw'
+   
+       } else if(computerMove == 'rock'){
+           outcome = 'you lose'
+       } else {
+           outcome = 'you win'
+       }
+       break;
+   
+   }
 
-    case 'rock': 
-    if(computerMove == 'rock'){
-        outcome = 'draw'
+     alert(`Computer chose ${computerMove}, ${outcome}`)
+       
+   }
+   
 
-    } else if(computerMove == 'paper'){
-        outcome = 'you lose'
-        computerScore++;
-    } else {
-        outcome = 'you win'
-        playerScore++;
-    }
-    break;
-    case 'paper':
-    if(computerMove == 'paper'){
-        outcome = 'draw'
-
-    } else if(computerMove == 'scissors'){
-        outcome = 'you lose'
-        computerScore++;
-    } else {
-        outcome = 'you win'
-        playerScore++;
-    }
-    break;
-    case 'scissors':
-    if(computerMove = 'scissors'){
-        outcome = 'draw'
-
-    } else if(computerMove == 'rock'){
-        outcome = 'you lose'
-        computerScore++;
-    } else {
-        outcome = 'you win'
-        playerScore++;
-    }
-    break;
-
-}
-alert(`Computer chose ${computerMove}, ${outcome}`)
+    const playerScoreDisplay = document.querySelector('.playerScore')
+    const computerScoreDisplay = document.querySelector('.computerScore')
 
 
+    const rockButton = document.querySelector('.rock')
+    const paperButton = document.querySelector('.paper')
+    const scissorsButton = document.querySelector('.scissors')
 
-}
+    rockButton.addEventListener('click', function(){
 
-alert(`you: ${playerScore} computer: ${computerScore}`)
+        playRound('rock')
+        if(outcome === 'you win'){
+            playerScore++;
+        } else if (outcome === 'you lose'){
+            computerScore++;
+        }
+        playerScoreDisplay.innerHTML = `Player:${playerScore}`
+        computerScoreDisplay.innerHTML = `Computer:${computerScore}`
 
-</script>
+    })
+    paperButton.addEventListener('click', function(){
+
+        playRound('paper')
+        if(outcome === 'you win'){
+            playerScore++;
+        } else if (outcome === 'you lose'){
+            computerScore++;
+        }
+        playerScoreDisplay.innerHTML = `Player:${playerScore}`
+        computerScoreDisplay.innerHTML = `Computer:${computerScore}`
+
+    })
+    scissorsButton.addEventListener('click', function(){
+
+        playRound('scissors')
+        if(outcome === 'you win'){
+            playerScore++;
+        } else if (outcome === 'you lose'){
+            computerScore++;
+        }
+        playerScoreDisplay.innerHTML = `Player:${playerScore}`
+        computerScoreDisplay.innerHTML = `Computer:${computerScore}`
+        })
+
+
+      
+
+
+
+
+   </script>
+
+
+
+</html>
+
+
+
+
